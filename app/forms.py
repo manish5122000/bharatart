@@ -1,7 +1,7 @@
 # from app.views import Sponser_id
 from django import forms
 from django.db import models
-from .models import Support_User_Sponser_detail
+from .models import Support_User_Sponser_detail, support_bank_detail
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth import password_validation
@@ -62,3 +62,13 @@ class Sponser_id_form(forms.ModelForm):
     class Meta:
         model = Support_User_Sponser_detail
         fields =  ['name']
+
+class bank_detail(forms.Form):
+    Account_Holder_Name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':"form-control"}))
+    Account_Number = forms.CharField(required=True, widget=forms.NumberInput(attrs={'class':"form-control"}))
+    Confirm_Account_Number = forms.CharField(required=True, widget=forms.NumberInput(attrs={'class':"form-control"}))
+    IFSC_Code = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':"form-control"}))
+
+    class Meta:
+        model = support_bank_detail
+        fields = ['Account_Holder_Name', 'Account_Number', 'Confirm_Account_Number', 'IFSC_Code']

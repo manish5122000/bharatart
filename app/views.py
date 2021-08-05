@@ -29,7 +29,8 @@ def Login(request):
     return render(request, 'app/login.html')
 
 def Profile(request):
-    return render(request, 'app/profile.html')
+    p_form = Support_User_Sponser_detail.objects.filter(user=request.user)
+    return render(request, 'app/profile.html',{'p_form':p_form})
 
 def Logout(request):
     return render(request, 'app/logout.html')

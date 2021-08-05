@@ -111,4 +111,15 @@ class Support_User_Sponser_detail(models.Model):
             self.sponser_id = sponser_id
         super().save(*args, **kwargs)
 
+
+class support_bank_detail(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    Account_Holder_Name = models.CharField(max_length=20)
+    Account_Number = models.PositiveBigIntegerField()
+    Confirm_Account_Number = models.PositiveBigIntegerField()
+    IFSC_Code = models.CharField(max_length=11)
+    
+    def __str__(self) -> str:
+        return str(self.user)
+
     
